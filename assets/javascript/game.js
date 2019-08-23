@@ -1,44 +1,35 @@
 
-$(document).keypress(function (event) {// test link to index
-alert("I'm here! Do you see me.");
+    // the real code
+alert("Here it is!");
 
-// replace span id="space" with text on click
-document.getElementById("space").innerHTML = "Space Filler";
+$(document).keypress(function (event) {
+    alert("Here we go!");
+    // create work list
+    var wordList = ["cat", "dog", "aardvark"];
 
+    var winCount = document.getElementById("wCnt").textContent;
+    alert(winCount);
+    winCount = 10;
 
-// add letter buttons
+    var loseCount = document.getElementById("lCnt").textContent;
+    alert(loseCount);
+    loseCount = 10;
 
+    for (var i = 0; i < wordList.length; i++) {
+        //create p tag for each animal
+        var listAnimal = $("<p>");
+        // add class nifty to each p tag
+        listAnimal.addClass("nifty");
+        listAnimal.text(wordList[i]);
+        $("#list").append(listAnimal);
 
-// test code for dom usage
-// Inside, we latch onto the "emptyDiv" using the JavaScript ".getElementById" selector.
-var targetDiv = document.getElementById("empty-div");
+        // update counters
+        winCount.text = winCount +=1;
+        loseCount.text = loseCount -= 1;
+    }
 
-// We then use the JavaScript method ".textContent" to change the content to "Hello friends!"
-targetDiv.textContent = "Hello friends!";
+    // change counts in spans
+    document.getElementById("wCnt").innerHTML = winCount;
+    document.getElementById("lCnt").innerHTML = loseCount;
 
-// create variable to latch onto div element using .getElementById("id=name")
-var grabText = document.getElementById("newText");
-// use js .textContent method to change contents of div
-grabText.textContent = "Making it work!";
-
-
-// make new div to add on content
-var moreText = document.createElement("div"); 
-// set id attribute for new div - need to use targetDiv?
-// moreText.setAttribute("id","anotherDiv");
-// better code?
-document.getElementsByTagName("div")[0].setAttribute("id", "anotherDiv");
-// add text to new div
-moreText.textContent = "More to come.";
-// insert additional text into new div
-anotherDiv.appendChild(moreText);
-
-// use some styling on new text
-moreText.setAttribute("class", "nifty");
-
-//
-var oneMoreTime = document.getElementById("recentText");
-recentText.textContent = "What will this do?";
 });
-
-// the real code
