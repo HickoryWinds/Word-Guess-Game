@@ -1,0 +1,9 @@
+body {
+    background-image: url(gravel.png);
+}
+
+h1 {
+    font-size: 20pt;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+}
