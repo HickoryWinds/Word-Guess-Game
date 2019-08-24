@@ -16,19 +16,25 @@
     
     </head>
     <body>
-        <script src="assets/javascript/game.js"></script>
         <!-- the real code -->
         <!-- set up 1 x 3 grid layout -->
-        <h1>Press Any Key to Start</h1>
-        <div id="list"></div>
-        <h1>Number of Guesses Remaining: <span id="guessRem"></span></h1>
-        <h1>Win Count: <span id="wCnt"></h1>
-        <h1>Lose Count: <span id="lCnt"></h1>
-        <img src="fridge.png">
-        <div id="display"></div>
-        
-        <div id="buttons"></div>
+        <div class="row">
+            <div class="col-3" id="list">
+                <h1>Press Any Key to Start</h1>
+                <h1>Number Guesses Remaining: <span id="guessRem"></span></h1>
+                <h1>Win Count: <span id="wCnt"></h1>
+                <h1>Lose Count: <span id="lCnt"></h1>
+            </div>
+            <div class="col-2" id="array">
+            </div>
+            <div class="col-7" id="buttons">
+            </div>
+        </div>
         <button id="clear">clear</button>
+        <!-- <div id="array"></div>        -->
+        <!-- <div id="list"></div> -->
+        <!-- <div id="buttons"></div> -->
+        <script src="assets/javascript/game.js"></script>
 
         
     </body>
