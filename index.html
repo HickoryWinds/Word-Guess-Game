@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-        <title>Word Guess Game</title>
+        <title>Keyboard Input</title>
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS 4.0-->
@@ -14,6 +14,67 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
     
+        <script>
+        var counter = 0;
+        // var data = [];
+        // alert(data);
+        var wordList = ["cat", "dog", "aardvark"];
+        var word = wordList[Math.floor(Math.random() * wordList.length)];
+        var key_press = ""
+        var winCount = 4;
+        var loseCount = 20;
+        var answerArr = [];
+        var guessesRem = 20;
+        for (var i = 0; i < word.length; i++) {
+            answerArr[i] = "_"
+            // update counters
+            winCount = winCount += 1;
+            loseCount = loseCount -= 1;
+        }
+        $("#blanks").text(answerArr);
+        // console.log(data);
+        // for (var i; i < 10; i--) {
+
+            document.addEventListener("keypress", processKeyPress, false);
+            // window.addEventListener("keydown", processKeyDown, false);
+            
+            function processKeyPress(event)
+            {
+                // var counter = 0;
+                
+                // data[counter] = String.fromCharCode(event.charCode);
+                // console.log(data);
+                // $("#blanks").append(data[counter]);
+                $("#lrtIn").append(String.fromCharCode(event.charCode));
+                counter++;
+                // alert(counter);
+                $("#wCnt").append(counter);
+                // alert(String.fromCharCode(event.charCode))
+                for (var j = 0; j < word.length; j++) {
+                    // alert(word[j]);
+                    if (word[j] === String.fromCharCode(event.charCode)) {
+                    answerArr[j] = String.fromCharCode(event.charCode)
+                    guessesRem--;
+                    // alert(answerArr);
+                    $("#blanks").text(answerArr);
+                }
+            }
+            }
+        // }
+        // var z = 0;
+        // alert(z);
+        // document.addEventListener("keypress", addGuess, false);
+
+        // function addGuess(event) {
+        //     data[z] = String.fromCharCode(event.fromCharCode);
+        //     $("#wCnt").append(z);
+        //     z++
+        // }
+
+        </script>
+
+
+
     </head>
     <body>
         <!-- the real code -->
@@ -22,19 +83,23 @@
             <div class="col-3" id="list">
                 <h1>Press Any Key to Start</h1>
                 <h1>Number Guesses Remaining: <span id="guessRem"></span></h1>
-                <h1>Win Count: <span id="wCnt"></h1>
-                <h1>Lose Count: <span id="lCnt"></h1>
+                <h1>Win Count: <span id="wCnt"></span></h1>
+                <h1>Loss Count: <span id="lCnt"></span></h1>
+                <h1>Guesses Made: <span id="lrtIn"></span></h1>
+                <h1>Key Pressed: <span id="kp"></span></h1>
+                
             </div>
-            <div class="col-2" id="array">
+            <div class="col-3" id="array">
+                <span id="blanks"></span>
             </div>
-            <div class="col-7" id="buttons">
+            <div class="col-6" id="buttons">
             </div>
         </div>
         <button id="clear">clear</button>
         <!-- <div id="array"></div>        -->
         <!-- <div id="list"></div> -->
         <!-- <div id="buttons"></div> -->
-        <script src="assets/javascript/game.js"></script>
+        <!-- <script src="assets/javascript/game.js"></script> -->
 
         
     </body>

@@ -21,7 +21,7 @@ h1 {
 .letter {
   width: 30px;
   height: 30px;
-  border-style: solid;
+  /* border-style: solid; */
   padding: 2px;
   float: left;
   margin: 2px;
@@ -52,4 +52,9 @@ h1 {
   color: black;
   border-style: solid;
   width: 100px;
+}
+
+#blanks {
+  font-size: 36pt;
+  font-weight: bolder;
 }
