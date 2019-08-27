@@ -11,7 +11,7 @@ document.addEventListener("keypress", processKeyPress, false);
 //------------------------
 
 // array of word choices
-var wordList = [ "aardvark", "bear", "cat", "coyote", "deer", "dog", "horse", "kangaroo", "koala", "lion", "pig", "wolf"];
+var wordList = [ "aardvark", "bear", "cat", "coyote", "deer", "dog", "fox", "horse", "kangaroo", "koala", "lion", "pig", "wolf"];
 
 // select word from array
 var word = "";
@@ -58,11 +58,6 @@ function intializeGame() {
 function processKeyPress(event) {
     intializeGame();
     newGame = false;
-    // reduce guessesRemaining for each choice made
-    guessesRemaining--;
-    // notify player about number guesses remaining
-    $("#guessRem").text(guessesRemaining);
-
         // if player runs out of guesses, increase loss by one and start
         // game over with processKeyPress
         if (guessesRemaining == 0) {
@@ -79,33 +74,48 @@ function processKeyPress(event) {
             // add letter to choices made
             $("#lrtIn").append(String.fromCharCode(event.charCode).toLowerCase());
 
+            // test for repeated choices
+            if (oldWord != String.fromCharCode(event.charCode).toLowerCase()) {
+
+             // reduce guessesRemaining for each non repeated choice made
+             guessesRemaining--;
+             // notify player about number guesses remaining
+             $("#guessRem").text(guessesRemaining);
+
             // loop to check key press against letters in word chosen
             for (var j = 0; j < word.length; j++) {
-                    
+
                     // run loop to check if character typed in matches a letter
                     if (word[j] === String.fromCharCode(event.charCode).toLowerCase()) {
                         answerArr[j] = String.fromCharCode(event.charCode)
+                        
 
                         // store word[j] to prevent same character being entered sequentially
                         oldWord = word[j];
+
+                        // alert( "oldWord " + oldWord);
+
                         // used to determine number of correct choices
                         numberCorrect--;
                         // replace blank with correct letter chosen
                         $("#blanks").text(answerArr);
-
-                            // function checkForEnd determines if all correct letters
-                            // have been chosen and set condition for new game
-                            if (numberCorrect == 0) {
-                                // resets defaults
-                                newGame = true;
-                                winCount += 1;
-                                $("#winCnt").text(winCount);
-
-                                // use onclick event so no characer prints
-                                processKeyPress(onclick);
-                            }
-            
+                        
+                        
+                        // function checkForEnd determines if all correct letters
+                        // have been chosen and set condition for new game
+                        if (numberCorrect == 0) {
+                            // resets defaults
+                            oldWord = "";
+                            newGame = true;
+                            winCount += 1;
+                            $("#winCnt").text(winCount);
+                            
+                            // use onclick event so no characer prints
+                            processKeyPress(onclick);
+                        }
+                        
                     }
+                }
             }
 
     }
