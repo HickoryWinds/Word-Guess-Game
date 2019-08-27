@@ -1,60 +1,65 @@
+/* set image for background */
 body {
-    background-image: url(gravel.png);
+    background-image: url(nature_2.jpg);
 }
 
+/* set style for h1 */
 h1 {
     font-size: 20pt;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bolder;
 }
 
-/* img {
-    float: right;
-} */
-
-.nifty {
-    color: yellowgreen;
-    font-size: 20pt;
+/* style for game heading */
+.banner {
+  font-size: 36pt;
+  font-family: fantasy;
+  text-align: center;
+  background-color: yellow;
 }
 
-
-.letter {
-  width: 30px;
-  height: 30px;
-  /* border-style: solid; */
-  padding: 2px;
-  float: left;
-  margin: 2px;
+/* positioning for guesses made and remaining */
+.guesses {
+  text-align: left;
 }
 
-.letter-button-color {
-  color: darkcyan;
+/* positioning for win loss stats */
+.stats {
+  text-align: right;
 }
 
-.fridge-color {
-  color: orange;
+/* positioning for blanks */
+.array {
+  text-align: center;
 }
 
-#display {
-  margin-top: 78px;
-  height: 500px;
-  width: 220px;
-  margin-left: 60px;
-}
-
-#buttons {
-  padding-top: 60px;
-}
-
-#clear {
+/*clearfix */
+/* #clear {
   margin-left: 20px;
   font-size: 25px;
   color: black;
   border-style: solid;
   width: 100px;
-}
+} */
 
+/* blank to be filled in */
 #blanks {
   font-size: 36pt;
   font-weight: bolder;
+}
+
+/* Make the image fully responsive */
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+}
+
+/* text color for headings and blanks */
+.white-text {
+  color: white;
+}
+
+/* for transparent characters */
+.trans {
+  color: transparent;
 }

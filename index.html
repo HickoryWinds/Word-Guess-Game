@@ -1,46 +1,114 @@
 <!DOCTYPE html>
-
+<html lang="en-us">
     <head>
-        <meta charset="utf-8">
-        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-        <title>Keyboard Input</title>
-        <meta charset="utf-8">
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <title>Animal Word Guess</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Latest compiled and minified CSS 4.0-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
+        <!-- Latest compiled and minified CSS 4.0-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     </head>
     <body>
-        <!-- the real code -->
-        <!-- set up grid layout -->
-        <div class="row">
-            <div class="col-3" id="list">
-                <h1>Press Any Key to Start</h1>
-                <h1>Guesses Made: <span id="lrtIn"></span></h1>
-                <!-- <h1>Number of Key Presses: <span id="kp"></span></h1> -->
-                <h1>Number Guesses Remaining: <span id="guessRem"></span></h1>
-                <h1>Win Count: <span id="winCnt"></span></h1>
-                <h1>Loss Count: <span id="lossCnt"></span></h1>
-                <!-- <h1>Message: <span id="message"></span></h1> -->
-                
-            </div>
-            <div class="col-3" id="array">
-                <span id="blanks"></span>
-            </div>
-            <div class="col-6" id="buttons">
-            </div>
-        </div>
-        <!-- <button id="clear">clear</button> -->
-        <!-- <div id="array"></div>        -->
-        <!-- <div id="list"></div> -->
-        <!-- <div id="buttons"></div> -->
-        <script src="assets/javascript/game.js"></script>
+        <div class="container-fluid">
+            <!-- set up grid layout -->
 
-        
+            <!-- game page name; row #1 -->
+            <div class="row banner">
+                <div class="col-12">
+                    <strong style="border-collapse: collapse">
+                        <p>Animal<span class="trans">sp</span> Kingdom<span class="trans">sp</span>Word Guess</p>
+                    </strong>
+                </div>
+            </div>
+            <!-- row #2 -->
+            <div class="row white-text">
+                <!-- brief instruction description -->
+                <div class="col-3 stats">
+                    <br>
+                    <h1>Press Any Key to Start</h1>
+                </div>
+                <!-- area for blanks -->
+                <div class="col-6 array" style="height: 20%">
+                    <br>
+                    <br>
+                    <span id="blanks"></span>
+                </div>
+                <!-- headings related to guesses -->
+                <div class="col-3 guesses">
+                    <br><br>
+                    <h1>Guesses Made: <span id="lrtIn"></span></h1>
+                    <br>
+                    <h1>Guesses Left: <span id="guessRem"></span></h1>
+                </div>
+            </div>
+            <!-- row #3 -->
+            <div class="row white-text">
+                <!-- headings related to game stats -->
+                <div class="col-3 stats">
+                    <br>
+                    <h1>Win Count: <span id="winCnt"></span></h1>
+                    <br>
+                    <h1>Loss Count: <span id="lossCnt"></span></h1>
+                </div>
+                <div class="col-6 array">
+                </div>
+                <div class="col-3 guesses">
+                </div>
+            </div>
+            
+            <!-- script placed here after grid is in place -->
+            <script src="assets/javascript/game.js"></script>
+
+            <!-- carousel of animal photos -->
+            <div id="demo" class="carousel slide" data-ride="carousel">
+                
+                <!-- The slideshow -->
+                <div class="row">
+                    <div class="col-4">
+                        
+                    </div>
+                    <div class="col-4">
+                        
+                        <div class="carousel-inner">
+                            <!-- animal photos listing -->
+                            <div class="carousel-item active">
+                                <img src="assets/images/bear_1.jpg" alt="bear_1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/images/cat_1.jpeg" alt="cat_1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/images/deer_1.jpeg" alt="deer_1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/images/dog_1.jpeg" alt="dog_1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/images/fox_1.jpeg" alt="fox_1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/images/horse_1.jpeg" alt="horse_1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/images/Lion_1.jpeg" alt="Lion_1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/images/pig_1.jpeg" alt="pig_1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/images/wolf_2.jpeg" alt="wolf_1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
     </body>
 </html>

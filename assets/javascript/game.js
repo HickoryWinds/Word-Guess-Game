@@ -1,6 +1,7 @@
 // set global variable to determine if a new game has started
 var newGame = true;
-
+// put in placeholder for blanks
+$("#blanks").text("");
 // listen for keypress to start game
 document.addEventListener("keypress", processKeyPress, false);
 
@@ -9,13 +10,13 @@ document.addEventListener("keypress", processKeyPress, false);
 // define global variables
 //------------------------
 
-
 // array of word choices
-var wordList = ["cat", "dog", "aardvark"];
+var wordList = [ "aardvark", "bear", "cat", "coyote", "deer", "dog", "horse", "kangaroo", "koala", "lion", "pig", "wolf"];
 
 // select word from array
-var word = ""
-
+var word = "";
+// variable used to check for double counting
+var oldWord = "";
 
 var numberCorrect = 0;
 // allows for 10 incorrect guesses before starting new game
@@ -33,35 +34,23 @@ var answerArr = [];
     $("#lossCnt").text(loseCount);
     
     
-    // function intializeGame sets variables for start of a new game
-    function intializeGame() {
-        if (newGame) {
-            // select word from array
-            word = wordList[Math.floor(Math.random() * wordList.length)];
-            numberCorrect = word.length; // remove later?
-
-        // create blanks for word chosen after clearing area
-        answerArr = [];
-        for (var i = 0; i < word.length; i++) {
-            answerArr[i] = "_"
-        }
-
-        guessesRemaining = 11;
+// function intializeGame sets variables for start of a new game
+function intializeGame() {
+    if (newGame) {
+        // select word from array
+        word = wordList[Math.floor(Math.random() * wordList.length)];
+        numberCorrect = word.length; // remove later?
+            // create blanks for word chosen after clearing area
+            answerArr = [];
+            for (var i = 0; i < word.length; i++) {
+                answerArr[i] = "_"
+            }
+        // number of gueeses is 15 plus 1 for initial keypress
+        guessesRemaining = 16;
         // display intial values
         $("#blanks").text(answerArr);
         $("#lrtIn").text("");
     }
-    //  else {
-        // test if condition test works; remove later
-        // winCount = 1;
-
-        // alert("here i am");
-
-        // winCount += 1;
-        // loseCount -= 1;
-        // $("#winCnt").text(winCount);
-        // $("#lossCnt").text(loseCount);
-    // }
 } 
 
 // function processKeyPress adds letter to choice list, checks value
@@ -88,15 +77,17 @@ function processKeyPress(event) {
         } else {
             
             // add letter to choices made
-            $("#lrtIn").append(String.fromCharCode(event.charCode));
+            $("#lrtIn").append(String.fromCharCode(event.charCode).toLowerCase());
 
             // loop to check key press against letters in word chosen
             for (var j = 0; j < word.length; j++) {
                     
                     // run loop to check if character typed in matches a letter
-                    if (word[j] === String.fromCharCode(event.charCode)) {
+                    if (word[j] === String.fromCharCode(event.charCode).toLowerCase()) {
                         answerArr[j] = String.fromCharCode(event.charCode)
-                        
+
+                        // store word[j] to prevent same character being entered sequentially
+                        oldWord = word[j];
                         // used to determine number of correct choices
                         numberCorrect--;
                         // replace blank with correct letter chosen
@@ -109,6 +100,7 @@ function processKeyPress(event) {
                                 newGame = true;
                                 winCount += 1;
                                 $("#winCnt").text(winCount);
+
                                 // use onclick event so no characer prints
                                 processKeyPress(onclick);
                             }
