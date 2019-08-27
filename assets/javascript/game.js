@@ -45,8 +45,8 @@ function intializeGame() {
             for (var i = 0; i < word.length; i++) {
                 answerArr[i] = "_"
             }
-        // number of gueeses is 15 plus 1 for initial keypress
-        guessesRemaining = 16;
+        // number of gueeses is 15
+        guessesRemaining = 15;
         // display intial values
         $("#blanks").text(answerArr);
         $("#lrtIn").text("");
@@ -58,6 +58,9 @@ function intializeGame() {
 function processKeyPress(event) {
     intializeGame();
     newGame = false;
+         // notify player about number guesses remaining
+         $("#guessRem").text(guessesRemaining);
+
         // if player runs out of guesses, increase loss by one and start
         // game over with processKeyPress
         if (guessesRemaining == 0) {
@@ -79,8 +82,6 @@ function processKeyPress(event) {
 
              // reduce guessesRemaining for each non repeated choice made
              guessesRemaining--;
-             // notify player about number guesses remaining
-             $("#guessRem").text(guessesRemaining);
 
             // loop to check key press against letters in word chosen
             for (var j = 0; j < word.length; j++) {
