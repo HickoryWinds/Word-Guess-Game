@@ -1,5 +1,6 @@
 // set global variable to determine if a new game has started
 var newGame = true;
+// variable to store keypress
 // put in placeholder for blanks
 $("#blanks").text("");
 // listen for keypress to start game
@@ -16,8 +17,8 @@ var wordList = [ "aardvark", "bear", "cat", "coyote", "deer", "dog", "fox", "hor
 // select word from array
 var word = "";
 // variable used to check for double counting
-var oldWord = "";
-
+var oldLetter = "";
+// variable to decrement when correct choice made
 var numberCorrect = 0;
 // allows for 10 incorrect guesses before starting new game
 var guessesRemaining = 0;
@@ -50,6 +51,8 @@ function intializeGame() {
         // display intial values
         $("#blanks").text(answerArr);
         $("#lrtIn").text("");
+        // set oldLetter to initial value
+        oldLetter = "";
     }
 } 
 
@@ -78,23 +81,21 @@ function processKeyPress(event) {
             $("#lrtIn").append(String.fromCharCode(event.charCode).toLowerCase());
 
             // test for repeated choices
-            if (oldWord != String.fromCharCode(event.charCode).toLowerCase()) {
+            if (oldLetter != String.fromCharCode(event.charCode).toLowerCase()) {
 
-             // reduce guessesRemaining for each non repeated choice made
-             guessesRemaining--;
+                // set oldLetter to new keypress so sequential multiple letters not as more guesses
+                oldLetter = String.fromCharCode(event.charCode);
+                // reduce guessesRemaining for each non repeated choice made
+                guessesRemaining--;
 
-            // loop to check key press against letters in word chosen
-            for (var j = 0; j < word.length; j++) {
+                    console.log(guessesRemaining);
+
+                // loop to check key press against letters in word chosen
+                for (var j = 0; j < word.length; j++) {
 
                     // run loop to check if character typed in matches a letter
                     if (word[j] === String.fromCharCode(event.charCode).toLowerCase()) {
                         answerArr[j] = String.fromCharCode(event.charCode)
-                        
-
-                        // store word[j] to prevent same character being entered sequentially
-                        oldWord = word[j];
-
-                        // alert( "oldWord " + oldWord);
 
                         // used to determine number of correct choices
                         numberCorrect--;
@@ -106,7 +107,7 @@ function processKeyPress(event) {
                         // have been chosen and set condition for new game
                         if (numberCorrect == 0) {
                             // resets defaults
-                            oldWord = "";
+                            oldLetter = "";
                             newGame = true;
                             winCount += 1;
                             $("#winCnt").text(winCount);
