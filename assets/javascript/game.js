@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var loseCount = 0;
     // array for word chosen - will start as blanks
     var answerArr = [];
-    // var to use in letter comparison test
-    var j = 0;
+    // array to use in letter comparison test
+    var corrGuessList = [];
     // store keypress in key variable
     var key = "";
     
@@ -60,8 +60,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // blankGen creates blanks for word chosen after clearing area
     function blankGen(word) {
         answerArr = [];
+        corrGuessList = [];
         for (var i = 0; i < word.length; i++) {
-            answerArr[i] = "_"
+            answerArr[i] = "_";
+            corrGuessList[i] = "_";
         }    
     }
     
@@ -119,8 +121,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function corCheck(word, key) {
         for (j = 0; j < word.length; j++) {
             // check if character typed in matches a letter of word chosen
-            if (word[j] === key.toLowerCase()) {
+            if (word[j] === key.toLowerCase() && word[j] != corrGuessList[j]) {
                 answerArr[j] = key;
+                corrGuessList[j] = (key);
+                console.log(corrGuessList);
                 // used to determine number of correct choices
                 numberCorrect--;
                 // replace blank with correct letter chosen
