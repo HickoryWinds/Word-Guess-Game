@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return key;
         } else {
             // if not a letter return null value
-            return String.fromCharCode(0);
+            return null;
         }
     }
     
@@ -166,27 +166,31 @@ document.addEventListener('DOMContentLoaded', function() {
     function processKeyPress(event) {
         // get charCode from keypress    
         key = String.fromCharCode(event.charCode);
-        // key = event.Code;
-        if (newGame === true) { guessesRemaining--;}
         // check to see if character entered is a letter
         var useKey = charCheck(key);
-    
+        console.log("this is the useKey " + useKey)
         intializeGame();
         newGame = false;
         // test for repeated choices
         // notify player about number guesses remaining
         document.getElementById("guessRem").innerHTML = guessesRemaining;
-        // if player runs out of guesses, increase loss by one and start
-        // game over with processKeyPress
-        gameOver(guessesRemaining);
-    
-        // add letter guessed to list
-        guessArr.push(useKey);
-        document.getElementById("lrtIn").innerHTML = guessArr;
-        console.log("pre push key " + useKey);
-        multCharCheck(oldLetter, word, useKey);
-        oldLetter = useKey;
-        console.log("pre push key " + useKey);
+        // continue game if key press is a letter
+        if (useKey != null) {
+            document.getElementById("startUp").innerHTML = ("Good Luck!");
+            // if player runs out of guesses, increase loss by one and start
+            gameOver(guessesRemaining);
+            // add letter guessed to list
+            guessArr.push(useKey);
+            document.getElementById("lrtIn").innerHTML = guessArr;
+            multCharCheck(oldLetter, word, useKey);
+            oldLetter = useKey;
+        } else {
+            // warn user to use letter key
+            guessArr.push("?");
+            document.getElementById("lrtIn").innerHTML = guessArr;
+            document.getElementById("startUp").innerHTML = ("Select a Letter Key");
+        }
+        
     }
 }, false);
     
