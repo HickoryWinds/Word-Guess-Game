@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // letters have NOT been chosen so loss increases by 1 and game
     // starts over
     function gameOver(guessesRemaining) {
-        if (guessesRemaining === 0) {
+        if (guessesRemaining === -1) {
             loseCount += 1;
             // update loss score
             document.getElementById("lossCnt").innerHTML = loseCount;
@@ -181,13 +181,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // continue game if key press is a letter
         if (useKey != null) {
             document.getElementById("startUp").innerHTML = ("Good Luck!");
-            // if player runs out of guesses, increase loss by one and start
-            gameOver(guessesRemaining);
             // add letter guessed to list
             guessArr.push(useKey);
             document.getElementById("lrtIn").innerHTML = guessArr;
             multCharCheck(oldLetter, word, useKey);
             oldLetter = useKey;
+            // if player runs out of guesses, increase loss by one and start
+            gameOver(guessesRemaining);
         } else {
             // warn user to use letter key
             guessArr.push("?");
